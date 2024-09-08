@@ -1,0 +1,103 @@
+[
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/user",
+      "body": {
+        "type": "JSON",
+        "json": {
+          "username": "new_user",
+          "password": "Password123",
+          "dob": "1990-01-01"
+        }
+      }
+    },
+    "httpResponse": {
+      "statusCode": 201,
+      "body": {
+        "message": "User created successfully",
+        "userId": "1234"
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/user",
+      "body": {
+        "type": "JSON",
+        "json": {
+          "username": "existing_user",
+          "password": "Password123",
+          "dob": "1990-01-01"
+        }
+      }
+    },
+    "httpResponse": {
+      "statusCode": 409,
+      "body": {
+        "error": "User already exists"
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/user",
+      "body": {
+        "type": "JSON",
+        "json": {
+          "username": "",
+          "password": "Password123",
+          "dob": "1990-01-01"
+        }
+      }
+    },
+    "httpResponse": {
+      "statusCode": 400,
+      "body": {
+        "error": "Invalid username"
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/user",
+      "body": {
+        "type": "JSON",
+        "json": {
+          "username": "valid_user",
+          "password": "short",
+          "dob": "1990-01-01"
+        }
+      }
+    },
+    "httpResponse": {
+      "statusCode": 400,
+      "body": {
+        "error": "Password must be more than 10 characters"
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/user",
+      "body": {
+        "type": "JSON",
+        "json": {
+          "username": "valid_user",
+          "password": "Password123",
+          "dob": "2050-01-01"
+        }
+      }
+    },
+    "httpResponse": {
+      "statusCode": 400,
+      "body": {
+        "error": "Invalid date of birth"
+      }
+    }
+  }
+]

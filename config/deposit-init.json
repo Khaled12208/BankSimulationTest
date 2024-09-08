@@ -1,0 +1,103 @@
+[
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/deposit",
+      "body": {
+        "type": "JSON",
+        "json": {
+          "accountId": "1234",
+          "amount": 500,
+          "currency": "USD"
+        }
+      }
+    },
+    "httpResponse": {
+      "statusCode": 201,
+      "body": {
+        "message": "Deposit successful",
+        "transactionId": "5678"
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/deposit",
+      "body": {
+        "type": "JSON",
+        "json": {
+          "accountId": "1234",
+          "amount": -500,
+          "currency": "USD"
+        }
+      }
+    },
+    "httpResponse": {
+      "statusCode": 400,
+      "body": {
+        "error": "Deposit amount must be greater than zero"
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/deposit",
+      "body": {
+        "type": "JSON",
+        "json": {
+          "accountId": "1234",
+          "amount": 0,
+          "currency": "USD"
+        }
+      }
+    },
+    "httpResponse": {
+      "statusCode": 400,
+      "body": {
+        "error": "Deposit amount must be greater than zero"
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/deposit",
+      "body": {
+        "type": "JSON",
+        "json": {
+          "accountId": "1234",
+          "amount": 1000000,
+          "currency": "USD"
+        }
+      }
+    },
+    "httpResponse": {
+      "statusCode": 400,
+      "body": {
+        "error": "Deposit exceeds the maximum allowable limit"
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "POST",
+      "path": "/deposit",
+      "body": {
+        "type": "JSON",
+        "json": {
+          "accountId": "1234",
+          "amount": 500,
+          "currency": "EUR"
+        }
+      }
+    },
+    "httpResponse": {
+      "statusCode": 400,
+      "body": {
+        "error": "Currency not supported"
+      }
+    }
+  }
+]

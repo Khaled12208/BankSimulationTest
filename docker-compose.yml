@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  mockserver:
+    image: mockserver/mockserver:latest
+    container_name: mockserver
+    ports:
+      - "1080:1080"
+    environment:
+      MOCKSERVER_PROPERTY_FILE: /config/mockserver.properties
+      MOCKSERVER_INITIALIZATION_JSON_PATH: /config/*.json
+    volumes:
+      - ./config:/config
+    command: >
+      sh -c 'mockserver -serverPort 1080 -logLevel INFO -mockServerLogLevel INFO -proxyRemotePort 8080'

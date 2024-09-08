@@ -1,0 +1,47 @@
+[
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/balance",
+      "queryStringParameters": {
+        "accountId": ["1234"]
+      }
+    },
+    "httpResponse": {
+      "statusCode": 200,
+      "body": {
+        "balance": 1000
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/balance",
+      "queryStringParameters": {
+        "accountId": ["9999"]
+      }
+    },
+    "httpResponse": {
+      "statusCode": 404,
+      "body": {
+        "error": "Account not found"
+      }
+    }
+  },
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/balance",
+      "queryStringParameters": {
+        "accountId": ["12344564"]
+      }
+    },
+    "httpResponse": {
+      "statusCode": 403,
+      "body": {
+        "error": "Unauthorized access"
+      }
+    }
+  }
+]
